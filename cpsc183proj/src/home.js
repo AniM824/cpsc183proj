@@ -1,74 +1,10 @@
 import React, { useState } from "react";
 
-const Home = ({ onSubmit }) => {
-  const [questions, setQuestions] = useState([
-    {
-      id: 1,
-      prompt: "Authors Guild v. Google (2015)",
-      description:
-        "Google digitized millions of books for its Google Books search engine, allowing users to search text and view small snippets of copyrighted works. The Authors Guild argued this violated copyright law, while Google claimed it was transformative and beneficial for research and education. The court ruled in favor of Google, holding that its snippet display was fair use because it was transformative and did not harm the market for the original works.",
-      answer: "",
-    },
-    {
-      id: 2,
-      prompt: "Google LLC v. Oracle America, Inc. (2021)",
-      description:
-        "Google used 11,500 lines of Java API code to develop its Android platform, arguing this use was necessary for innovation and fell under fair use. Oracle, the owner of the Java API, claimed copyright infringement, stating Google’s use was not transformative. The Supreme Court sided with Google, concluding that its use was fair because it was transformative, limited in scope, and did not harm Oracle's market.",
-      answer: "",
-    },
-    {
-      id: 3,
-      prompt: "Bloomberg v. Swatch Group (2014)",
-      description:
-        "Swatch held a private earnings call for analysts and later released a transcript. Bloomberg published the entire audio recording, claiming it was essential for news reporting. Swatch sued for copyright infringement, arguing the recording was not intended for public use. The court ruled in favor of Bloomberg, stating that the full reproduction was fair use due to its transformative purpose of news dissemination.",
-      answer: "",
-    },
-    {
-      id: 4,
-      prompt: "Warner Bros. Entertainment Inc. v. RDR Books (2008)",
-      description:
-        "This case revolved around The Harry Potter Lexicon, a fan-created encyclopedia based on J.K. Rowling’s Harry Potter series. The author and Warner Bros. sued RDR Books, arguing that the Lexicon infringed on their copyrights by copying substantial portions of the books without permission. The court ruled in favor of Warner Bros., restricting the Lexicon’s publication due to its commercial nature and market harm.",
-      answer: "",
-    },
-    {
-      id: 5,
-      prompt: "Sony Corp. v. Universal City Studios (1984)",
-      description:
-        "Universal sued Sony over the Betamax VCR, claiming it enabled users to record copyrighted TV programs, leading to widespread copyright infringement. Sony argued the device had substantial non-infringing uses, such as time-shifting (recording programs for later viewing). The Supreme Court ruled in favor of Sony, establishing the \"substantial non-infringing use\" doctrine and holding that manufacturers cannot be held liable for copyright infringement by their customers if the product has significant lawful applications.",
-      answer: "",
-    },
-    {
-      id: 6,
-      prompt: "Question 6",
-      description: "You feel comfortable taking risks.",
-      answer: "",
-    },
-    {
-      id: 7,
-      prompt: "Question 7",
-      description: "You adapt easily to change.",
-      answer: "",
-    },
-    {
-      id: 8,
-      prompt: "Question 8",
-      description: "You prefer structure over spontaneity.",
-      answer: "",
-    },
-  ]);
+const Home = ({ onStart }) => {
+  const [showDetails, setShowDetails] = useState(false);
 
-  const allAnswered = questions.every((q) => q.answer !== "");
-
-  const handleAnswerChange = (id, answer) => {
-    setQuestions(
-      questions.map((q) => (q.id === id ? { ...q, answer } : q))
-    );
-  };
-
-  const handleSubmit = () => {
-    if (allAnswered) {
-      onSubmit(questions);
-    }
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
   };
 
   return (
@@ -92,24 +28,58 @@ const Home = ({ onSubmit }) => {
           position: "sticky",
           top: 0,
           zIndex: 1000,
+          width: "100%",
+          boxSizing: "border-box",
         }}
       >
         CPSC 183 Final Project
       </div>
 
-      {/* Banner */}
+        {/* Green Banner */}
+            <div
+        style={{
+          backgroundColor: "#eb9963",
+          color: "white",
+          padding: "40px 20px",
+          textAlign: "center",
+          boxSizing: "border-box",
+        }}
+      >
+        <h1 style={{ fontSize: "2.5rem", margin: "0 0 20px" }}>
+          A Personality Quiz on Copyright
+        </h1>
+        <p
+          style={{
+            fontSize: "1.8rem", // Bigger text
+            margin: "0",
+            lineHeight: "1.8",
+          }}
+        >
+Below, you will find details on a fictional court case that falls into many legal and moral gray areas. We aim to create a “personality test” that will measure your legal philosophies to try and predict your stance on the given scenario. We will then provide a dynamically generated justification based on your answers to provide more insight into our prediction and your answers.
+        </p>
+      </div>
+
+      {/* Green Banner */}
       <div
         style={{
           backgroundColor: "#4CAF50",
           color: "white",
-          padding: "30px",
+          padding: "40px 20px",
           textAlign: "center",
+          boxSizing: "border-box",
         }}
       >
-        <h1 style={{ fontSize: "2.5rem", margin: "0 0 10px" }}>
-          A Personality Quiz on Copyright
+        <h1 style={{ fontSize: "2.5rem", margin: "0 0 20px" }}>
+          Summary
         </h1>
-        <p style={{ fontSize: "2rem", margin: "0" }}>
+        <p
+          style={{
+            fontSize: "1.8rem", // Bigger text
+            margin: "0",
+            lineHeight: "1.8",
+          }}
+        >
+
           A political advocacy group leverages an AI model trained on a dataset
           containing copyrighted books, movies, and social media posts to
           generate memes and short videos. These creations are designed to
@@ -122,116 +92,120 @@ const Home = ({ onSubmit }) => {
         </p>
       </div>
 
-      {/* Secondary Header */}
-    <div
-    style={{
-        backgroundColor: "#FFC107", // Yellow-like color for contrast
-        color: "#333",
-        padding: "30px",
-        textAlign: "center",
-    }}
-    >
-    <p style={{ fontSize: "1.8rem", margin: "0", lineHeight: "1.6" }}>
-        Please answer the following questions to help us explore how your opinions on
-        landmark legal cases, ethical dilemmas, and societal values may predict your
-        perspective on the given scenario. By examining your views on copyright, free
-        speech, monetization, and innovation, we aim to understand how these
-        principles shape your stance on the evolving role of AI in participatory
-        culture and political discourse.
-    </p>
-    </div>
+      {/* Light Blue Banner with Dropdown */}
+      <div
+        style={{
+          backgroundColor: "#87CEFA", // Light blue background
+          color: "white",
+          padding: "20px",
+          textAlign: "center",
+          fontSize: "2rem", // Matching green banner font size
+          fontWeight: "bold",
+          cursor: "pointer",
+          width: "100%",
+          boxSizing: "border-box",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        onClick={toggleDetails}
+      >
+        <span style={{ marginRight: "10px" }}>Full Details</span>
+        <span
+          style={{
+            transform: showDetails ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.3s",
+            fontSize: "1.4rem", // Smaller dropdown triangle
+            marginTop: "3px",
+          }}
+        >
+          ▼
+        </span>
+      </div>
 
-
-      {/* Questions Section */}
-      <div style={{ padding: "30px", fontSize: "1.6rem", margin: "0 auto", maxWidth: "1200px" }}>
-        {questions.map((q) => (
-          <div
-            key={q.id}
-            style={{
-              marginBottom: "40px",
-              borderBottom: "1px solid #ccc",
-              paddingBottom: "40px",
-            }}
-          >
-            {/* Court Case/Question Header */}
-            <h2
-              style={{
-                fontWeight: "bold",
-                fontSize: "2rem",
-                marginBottom: "10px",
-                textAlign: "center",
-              }}
-            >
-              {q.prompt}
-            </h2>
-            {/* Description */}
-            <p style={{ fontSize: "1.6rem", textAlign: "center" }}>
-              {q.description}
-            </p>
-
-            {/* Answer Options */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "20px",
-                border: "1px solid gray",
-                borderRadius: "5px",
-                overflow: "hidden",
-              }}
-            >
-              {["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"].map(
-                (option, idx) => (
-                  <button
-                    key={option}
-                    style={{
-                      padding: "20px",
-                      border: "none",
-                      backgroundColor:
-                        q.answer === option ? "#d0eaff" : "#f0f0f0",
-                      cursor: "pointer",
-                      flex: 1,
-                      fontSize: "1.6rem",
-                      fontWeight: "500",
-                      borderLeft:
-                        idx === 0 ? "none" : "1px solid #ccc", // Only add borders between buttons
-                      transition: "background-color 0.3s, border 0.3s",
-                    }}
-                    onClick={() => handleAnswerChange(q.id, option)}
-                    onMouseEnter={(e) =>
-                      (e.target.style.backgroundColor = "#e0e0e0")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.target.style.backgroundColor =
-                        q.answer === option ? "#d0eaff" : "#f0f0f0")
-                    }
-                  >
-                    {option}
-                  </button>
-                )
-              )}
-            </div>
-          </div>
-        ))}
-
-        {/* Submit Button */}
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
-          <button
-            disabled={!allAnswered}
-            onClick={handleSubmit}
-            style={{
-              padding: "20px 40px",
-              fontSize: "1.8rem",
-              cursor: allAnswered ? "pointer" : "not-allowed",
-              backgroundColor: allAnswered ? "#4CAF50" : "#ccc",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-            }}
-          >
-            Submit
-          </button>
+      {/* Full Details Section (Expandable) */}
+      {showDetails && (
+        <div
+          style={{
+            backgroundColor: "#E0F2F7", // Lighter blue background
+            color: "#333",
+            padding: "40px 20px",
+            textAlign: "center", // Centered text
+            lineHeight: "1.8",
+            fontSize: "1.8rem", // Bigger font size for expanded content
+            width: "100%",
+            boxSizing: "border-box",
+          }}
+        >
+          <p>
+          During a high-stakes election season, a political advocacy group called TrueVoice launched a digital campaign aimed at critiquing political candidates and policies. The group utilized a sophisticated AI model trained on a diverse dataset that included copyrighted books, movies, music, news articles, and social media posts. The AI-generated output consisted of short-form videos, memes, and multimedia posts that combined recognizable elements from popular culture with political messaging.
+          </p>
+          <p>
+          TrueVoice’s content quickly gained traction across platforms like TikTok, Instagram, and YouTube Shorts, where its engaging and provocative style resonated with millions of users. Using widely familiar movie scenes, viral song lyrics, and edited clips from news broadcasts, the campaign delivered pointed critiques of political figures, often with humor, irony, or satire. For example:
+          </p>
+          <ul style={{ margin: "20px auto", display: "inline-block", textAlign: "left" }}>
+            <li>
+              A clip from a well-known animated film was re-edited to depict a
+              politician as a villainous character.
+            </li>
+            <li>
+              Song lyrics about greed were paired with visuals of political
+              events involving wealth and luxury.
+            </li>
+            <li>
+            Selectively edited news footage presented candidates in ways that emphasized perceived contradictions or failures.
+            </li>
+          </ul>
+          <p>
+          The campaign blurred the line between entertainment and commentary, making it highly shareable. As the content spread, engagement metrics soared, and the group monetized its success through sponsorships, ad revenue, and donations.
+          </p>
+          <p>
+          Critics began to raise concerns about TrueVoice’s methods and the consequences of its campaign. Some objected to the use of copyrighted material, arguing that iconic works were being repurposed without authorization or credit. Movie studios, musicians, and other creators pointed to scenes, dialogue, and music that had been lifted from their works and inserted into political content that was now part of a monetized operation.
+          </p>
+          <p>
+          Others questioned the accuracy and tone of the campaign. While TrueVoice maintained that its content represented legitimate critique, opponents argued that heavily edited clips and exaggerated narratives misrepresented facts, unfairly targeting political figures. Certain videos used language and imagery that opponents described as inflammatory, reducing nuanced issues to oversimplified or distorted narratives. For example:
+          </p>
+          <ul style={{ margin: "20px auto", display: "inline-block", textAlign: "left" }}>
+            <li>
+              A post portrayed a political candidate alongside ominous music and
+              movie monologues to imply a threat to public safety.
+            </li>
+            <li>
+              A satirical meme mocked a candidate’s family, simplifying their
+              background into a caricature.
+            </li>
+          </ul>
+          <p>
+          Supporters of TrueVoice defended the group’s work as a modern form of political commentary that made complex issues accessible to a broader audience. They pointed to the content’s use of humor, irony, and cultural references as a legitimate method of critique. Others saw it as an important counterbalance to traditional media narratives, particularly for younger audiences accustomed to consuming news through social media formats.
+          </p>
+          <p>
+          However, the campaign’s rapid spread and influence raised questions about responsibility. Political opponents argued that the campaign’s tone and approach were not only misleading but harmful, especially when reputations were affected by content that reached millions of viewers.
+          </p>
+          <p>
+          As the election progressed, legal and ethical concerns surrounding TrueVoice’s campaign grew. The widespread use of copyrighted material, the monetization of content containing familiar pop-culture elements, and the group’s reliance on AI-driven editing tools brought attention to unresolved questions about modern digital expression. Critics questioned the extent to which such content could reshape public opinion while operating in a gray area of intellectual property, accuracy, and public discourse.
+          </p>
+          <p>
+          TrueVoice continued to defend its campaign, asserting that it used the tools of modern technology to engage citizens in political critique and encourage participation. For some, the campaign demonstrated the power of digital platforms and AI to disrupt traditional media and challenge public figures. For others, it represented a troubling shift in the boundaries of cultural expression, accountability, and public debate.
+          </p>
         </div>
+      )}
+
+      {/* Continue Button */}
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <button
+          onClick={onStart}
+          style={{
+            padding: "20px 40px",
+            fontSize: "1.8rem",
+            backgroundColor: "#4CAF50",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Continue
+        </button>
       </div>
     </div>
   );
