@@ -10,6 +10,11 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^4.2.4"
   },
+    "root": "cpsc183proj",
+    "build": {
+      "command": "npm run build",
+      "outputDirectory": "build"
+    },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
