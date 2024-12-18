@@ -56,6 +56,7 @@ const Home = ({ onStart }) => {
           boxSizing: "border-box",
           boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle bottom shadow
           borderBottom: "2px solid rgba(0, 0, 0, 0.1)", // Optional thin line
+          zoom: 0.8,
         }}
       >
         CPSC 183 Final Project
@@ -72,6 +73,7 @@ const Home = ({ onStart }) => {
           margin: "50px auto", // Increased spacing between bubbles
           maxWidth: "1500px", // Optional: Center the bubbles with max width
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+          zoom: 0.8,
         }}
       >
         <h1 style={{fontFamily: "'Montserrat', sans-serif", fontSize: "2.5rem", margin: "0 0 20px" }}>
@@ -99,6 +101,7 @@ Below, you will find details on a fictional court case that falls into many lega
           margin: "30px auto", // Increased spacing between bubbles
           maxWidth: "1500px", // Optional: Center the bubbles with max width
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+          zoom: 0.8,
         }}
       >
         <h1 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "2.5rem", margin: "0 0 20px" }}>
@@ -142,6 +145,7 @@ Below, you will find details on a fictional court case that falls into many lega
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          zoom: 0.8,
         }}
         onClick={toggleDetails}
       >
@@ -152,6 +156,7 @@ Below, you will find details on a fictional court case that falls into many lega
             transition: "transform 0.3s",
             fontSize: "1.4rem", // Smaller dropdown triangle
             marginTop: "3px",
+            zoom: 0.8, 
           }}
         >
           ▼
@@ -173,6 +178,7 @@ Below, you will find details on a fictional court case that falls into many lega
             margin: "20px auto", // Spacing between sections
             maxWidth: "1500px", // Optional: Center the bubbles with max width
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            zoom: 0.8,
           }}
         >
           <p>

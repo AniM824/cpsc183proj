@@ -142,7 +142,8 @@ const Questions = ({ onSubmit }) => {
       >
         <p style={{ fontSize: "1.4rem", margin: "0", lineHeight: "1.6" }}>
           Please answer the following questions to help us explore your opinions
-          on landmark legal cases, ethical dilemmas, and societal values.
+          on landmark legal cases, ethical dilemmas, and societal values. Answer whether you agree 
+          or disgree with each court's ruling.
         </p>
       </div>
 
