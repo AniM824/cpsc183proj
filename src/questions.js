@@ -203,6 +203,7 @@ const Questions = ({ onSubmit }) => {
             style={{
               padding: "15px 30px",
               fontSize: "1.6rem",
+              fontFamily: "'Montserrat', sans-serif",
               backgroundColor: allAnswered ? "#FFB300" : "#ccc",
               color: "white",
               border: "none",
