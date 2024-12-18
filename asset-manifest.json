@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cpsc183proj/static/css/main.63335199.css",
+    "main.js": "/cpsc183proj/static/js/main.b59fb06a.js",
+    "index.html": "/cpsc183proj/index.html",
+    "main.63335199.css.map": "/cpsc183proj/static/css/main.63335199.css.map",
+    "main.b59fb06a.js.map": "/cpsc183proj/static/js/main.b59fb06a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.63335199.css",
+    "static/js/main.b59fb06a.js"
+  ]
+}
