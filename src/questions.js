@@ -196,7 +196,7 @@ const Questions = ({ onSubmit }) => {
         ))}
 
         {/* Submit Button */}
-        <div style={{ textAlign: "center", marginTop: "40px" }}>
+        <div style={{ fontFamily: "'Montserrat', sans-serif", textAlign: "center", marginTop: "40px" }}>
           <button
             disabled={!allAnswered}
             onClick={handleSubmit}
