@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./styles.css";
+
+// Add a global style reset
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.overflowX = "hidden"; // Prevent horizontal scrolling
 
 const Questions = ({ onSubmit }) => {
+
     const [questions, setQuestions] = useState([
         {
           id: 1,
@@ -69,6 +76,13 @@ const Questions = ({ onSubmit }) => {
         },
     ]);
 
+    // Fade-in animation
+    const [isVisible, setIsVisible] = useState(false);
+  
+    useEffect(() => {
+      setTimeout(() => setIsVisible(true), 100); // Delay to trigger fade-in
+    }, []);
+
   const allAnswered = questions.every((q) => q.answer !== "");
 
   const handleAnswerChange = (id, answer) => {
@@ -79,16 +93,18 @@ const Questions = ({ onSubmit }) => {
 
   const handleSubmit = () => {
     if (allAnswered) {
+      window.scrollTo(0, 0); // Scrolls to the top of the page
       onSubmit(questions);
     }
   };
 
   return (
     <div
+      className={`fade-in ${isVisible ? 'show' : ""}`}
       style={{
-        fontFamily: "'Poppins', sans-serif",
+        fontFamily: "'Montserrat', sans-serif",
         color: "#333",
-        lineHeight: "1.8",
+        lineHeight: "1.5",
         margin: "0",
         padding: "0",
       }}
@@ -96,13 +112,20 @@ const Questions = ({ onSubmit }) => {
       {/* Top Bar */}
       <div
         style={{
-          backgroundColor: "#007B83",
-          color: "white",
+          fontFamily: "'Courier New', monospace",
+          color: "dark gray",
           padding: "15px 0",
           fontSize: "1.8rem",
           textAlign: "center",
           position: "sticky",
           top: 0,
+          zIndex: 1000,
+          width: "100%",
+          backdropFilter: "blur(10px)", // Blurs the content behind the header
+          WebkitBackdropFilter: "blur(10px)", // For Safari compatibility
+          boxSizing: "border-box",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle bottom shadow
+          borderBottom: "2px solid rgba(0, 0, 0, 0.1)", // Optional thin line
         }}
       >
         CPSC 183 Final Project
@@ -153,7 +176,7 @@ const Questions = ({ onSubmit }) => {
                   <button
                     key={option}
                     style={{
-                      padding: "10px 20px",
+                      padding: "15px 20px",
                       backgroundColor:
                         q.answer === option ? "#d0eaff" : "#f0f0f0",
                       border: "1px solid #ccc",
@@ -179,7 +202,7 @@ const Questions = ({ onSubmit }) => {
             style={{
               padding: "15px 30px",
               fontSize: "1.6rem",
-              backgroundColor: allAnswered ? "#4CAF50" : "#ccc",
+              backgroundColor: allAnswered ? "#FFB300" : "#ccc",
               color: "white",
               border: "none",
               cursor: allAnswered ? "pointer" : "not-allowed",

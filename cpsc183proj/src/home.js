@@ -1,4 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./styles.css";
+
+// Add a global style reset
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.overflowX = "hidden"; // Prevent horizontal scrolling
+
 
 const Home = ({ onStart }) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -7,12 +14,27 @@ const Home = ({ onStart }) => {
     setShowDetails(!showDetails);
   };
 
+  // Fade-in animation
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsVisible(true), 300); // Delay to trigger fade-in
+  }, []);
+
+  // Start next page at top of page
+  const handleStart = () => {
+    window.scrollTo(0, 0);
+    onStart();
+  }
+
   return (
     <div
+      className={`fade-in ${isVisible ? "show" : ""}`}
       style={{
-        fontFamily: "'Poppins', sans-serif",
+        backgroundColor: "white",
+        fontFamily: "'Montserrat', sans-serif",
         color: "#333",
-        lineHeight: "1.8",
+        lineHeight: "1.5",
         margin: "0",
         padding: "0",
       }}
@@ -20,16 +42,20 @@ const Home = ({ onStart }) => {
       {/* Top Bar */}
       <div
         style={{
-          backgroundColor: "#007B83",
-          color: "white",
+          color: "dark gray",
           padding: "15px 0",
+          fontFamily: "'Courier New', monospace",
           fontSize: "1.8rem",
           textAlign: "center",
           position: "sticky",
           top: 0,
           zIndex: 1000,
           width: "100%",
+          backdropFilter: "blur(10px)", // Blurs the content behind the header
+          WebkitBackdropFilter: "blur(10px)", // For Safari compatibility
           boxSizing: "border-box",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle bottom shadow
+          borderBottom: "2px solid rgba(0, 0, 0, 0.1)", // Optional thin line
         }}
       >
         CPSC 183 Final Project
@@ -38,14 +64,17 @@ const Home = ({ onStart }) => {
         {/* Green Banner */}
             <div
         style={{
-          backgroundColor: "#eb9963",
-          color: "white",
-          padding: "40px 20px",
+          backgroundColor: "#FFF9C4",
+          color: "#333333",
+          padding: "40px 80px",
           textAlign: "center",
-          boxSizing: "border-box",
+          borderRadius: "20px", // Rounded corners
+          margin: "50px auto", // Increased spacing between bubbles
+          maxWidth: "1500px", // Optional: Center the bubbles with max width
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
         }}
       >
-        <h1 style={{ fontSize: "2.5rem", margin: "0 0 20px" }}>
+        <h1 style={{fontFamily: "'Montserrat', sans-serif", fontSize: "2.5rem", margin: "0 0 20px" }}>
           A Personality Quiz on Copyright
         </h1>
         <p
@@ -62,14 +91,17 @@ Below, you will find details on a fictional court case that falls into many lega
       {/* Green Banner */}
       <div
         style={{
-          backgroundColor: "#4CAF50",
-          color: "white",
-          padding: "40px 20px",
+          backgroundColor: "#FFE082",
+          color: "#333333",
+          padding: "40px 80px",
           textAlign: "center",
-          boxSizing: "border-box",
+          borderRadius: "20px", // Rounded corners
+          margin: "30px auto", // Increased spacing between bubbles
+          maxWidth: "1500px", // Optional: Center the bubbles with max width
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
         }}
       >
-        <h1 style={{ fontSize: "2.5rem", margin: "0 0 20px" }}>
+        <h1 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "2.5rem", margin: "0 0 20px" }}>
           Summary
         </h1>
         <p
@@ -95,15 +127,18 @@ Below, you will find details on a fictional court case that falls into many lega
       {/* Light Blue Banner with Dropdown */}
       <div
         style={{
-          backgroundColor: "#87CEFA", // Light blue background
-          color: "white",
-          padding: "20px",
+          backgroundColor: "#FFF8E1", // Light blue background
+          color: "#5C4033",
+          padding: "20px 80px",
           textAlign: "center",
           fontSize: "2rem", // Matching green banner font size
           fontWeight: "bold",
           cursor: "pointer",
           width: "100%",
-          boxSizing: "border-box",
+          borderRadius: "20px", // Rounded corners
+          margin: "20px auto", // Spacing between sections
+          maxWidth: "1500px", // Optional: Center the bubbles with max width
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -127,14 +162,17 @@ Below, you will find details on a fictional court case that falls into many lega
       {showDetails && (
         <div
           style={{
-            backgroundColor: "#E0F2F7", // Lighter blue background
+            backgroundColor: "#FFF3E0", // Lighter blue background
             color: "#333",
-            padding: "40px 20px",
+            padding: "40px 80px",
             textAlign: "center", // Centered text
             lineHeight: "1.8",
             fontSize: "1.8rem", // Bigger font size for expanded content
             width: "100%",
-            boxSizing: "border-box",
+            borderRadius: "20px", // Rounded corners
+            margin: "20px auto", // Spacing between sections
+            maxWidth: "1500px", // Optional: Center the bubbles with max width
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
           }}
         >
           <p>
@@ -191,13 +229,14 @@ Below, you will find details on a fictional court case that falls into many lega
       )}
 
       {/* Continue Button */}
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <div style={{ textAlign: "center", margin: "40px auto", padding: "20px 0", borderRadius: "20px" }}>
         <button
-          onClick={onStart}
+          onClick={handleStart}
           style={{
-            padding: "20px 40px",
+            padding: "15px 30px",
             fontSize: "1.8rem",
-            backgroundColor: "#4CAF50",
+            fontFamily: "'Montserrat', sans-serif",
+            backgroundColor: "#FFB300",
             color: "white",
             border: "none",
             borderRadius: "5px",

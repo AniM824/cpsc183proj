@@ -1,4 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import "./styles.css";
+
+// Add a global style reset
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.overflowX = "hidden"; // Prevent horizontal scrolling
 
 const Results = ({ answers, goToHome }) => {
   // Reasonings for each question
@@ -95,30 +101,45 @@ freeSpeechScore = adjustIfZero(freeSpeechScore);
     .filter(Boolean) // Remove null values
     .join(" ");
 
+  // Fade-in animation
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsVisible(true), 300); // Delay to trigger fade-in
+  }, []);
+
   return (
     <div
+      className={`fade-in ${isVisible ? "show" : ""}`}
       style={{
-        fontFamily: "'Poppins', sans-serif",
+        fontFamily: "'Montserrat', sans-serif",
         textAlign: "center",
         padding: "20px",
-        lineHeight: "1.8",
+        lineHeight: "1.5",
       }}
     >
-            <div
+      <div
         style={{
-          backgroundColor: "#007B83",
-          color: "white",
+          color: "#333333",
           padding: "15px 0",
+          fontFamily: "'Courier New', monospace",
           fontSize: "1.8rem",
           textAlign: "center",
           position: "sticky",
           top: 0,
+          zIndex: 1000,
+          width: "100%",
+          backdropFilter: "blur(10px)", // Blurs the content behind the header
+          WebkitBackdropFilter: "blur(10px)", // For Safari compatibility
+          boxSizing: "border-box",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle bottom shadow
+          borderBottom: "2px solid rgba(0, 0, 0, 0.1)", // Optional thin line
         }}
       >
         CPSC 183 Final Project
       </div>
 
-      <h1 style={{ fontSize: "2.5rem", color: "#276749" }}>Results</h1>
+      <h1 style={{ fontSize: "2.5rem", color: "#FFB300" }}>Results</h1>
       <p style={{ fontSize: "1.8rem", marginTop: "20px" }}>
         Based on your answers, we predict that you <strong>{answer}</strong>{" "}
         TrueVoice.
@@ -135,27 +156,29 @@ freeSpeechScore = adjustIfZero(freeSpeechScore);
           boxSizing: "border-box", // Ensures padding doesn't affect width
         }}
       >
-        <h2 style={{ fontSize: "2rem", color: "#007B83" }}>Justification</h2>
+        <h2 style={{ fontSize: "2rem", color: "#FFB300" }}>Justification</h2>
         <p style={{ fontSize: "1.4rem" }}>{overallJustification}</p>
         <p style={{ fontSize: "1.4rem" }}>{reasoningParagraph}</p>
         <p style={{ fontSize: "1.4rem" }}>{copyrightJustification}</p>
         <p style={{ fontSize: "1.4rem" }}>{freeSpeechJustification}</p>
       </div>
-      <button
-        onClick={goToHome}
-        style={{
-          marginTop: "30px",
-          padding: "15px 30px",
-          fontSize: "1.5rem",
-          backgroundColor: "#276749",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Go to Home
-      </button>
+      <div style={{ margin: "20px auto", padding: "20px 0", borderRadius: "20px" }}>
+        <button
+          onClick={goToHome}
+          style={{
+            padding: "15px 30px",
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: "1.5rem",
+            backgroundColor: "#FFB300",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Home
+        </button>
+      </div>
     </div>
   );
 };
