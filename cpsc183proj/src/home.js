@@ -56,7 +56,6 @@ const Home = ({ onStart }) => {
           boxSizing: "border-box",
           boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle bottom shadow
           borderBottom: "2px solid rgba(0, 0, 0, 0.1)", // Optional thin line
-          zoom: 0.8,
         }}
       >
         CPSC 183 Final Project
