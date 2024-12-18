@@ -156,6 +156,7 @@ Below, you will find details on a fictional court case that falls into many lega
             transition: "transform 0.3s",
             fontSize: "1.4rem", // Smaller dropdown triangle
             marginTop: "3px",
+            zoom: 0.8, 
           }}
         >
           ▼
